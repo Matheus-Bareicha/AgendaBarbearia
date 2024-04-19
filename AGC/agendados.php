@@ -81,6 +81,7 @@ $resultado = mysqli_query($conexao, $sql);
   if (mysqli_num_rows($resultado) > 0) {
 
   ?>
+  <div class = "tabela-scroll">
 	<table border="1px">
   <tr>
     <th>Data</th>
@@ -113,6 +114,7 @@ $resultado = mysqli_query($conexao, $sql);
 mysqli_close($conexao);
 ?>
 </table>
+</div>
 <?php
 }else {
     echo "Nenhum resultado encontrado.";

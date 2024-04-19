@@ -20,7 +20,10 @@ body {
 	font-family: "";
 }
 
-
+.tabela-scroll {
+	max-height: 200px; /* Altura máxima do div */
+	overflow-y: auto; /* Adiciona barra de rolagem vertical */
+  }
 
 form , .divpilar{
 	display: flex;
