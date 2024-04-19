@@ -26,14 +26,14 @@ DROP TABLE IF EXISTS `agendamento`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `agendamento` (
   `Id_Agendamento` int(11) NOT NULL AUTO_INCREMENT,
-  `B_Login` varchar(15) NOT NULL,
+  `B_Email` varchar(15) NOT NULL,
   `C_CPF` char(11) NOT NULL,
   `Estado` char(1) NOT NULL,
   `Horario` datetime NOT NULL,
   PRIMARY KEY (`Id_Agendamento`),
-  KEY `fk_barbeiro_agendamento` (`B_Login`),
+  KEY `fk_barbeiro_agendamento` (`B_Email`),
   KEY `fk_cliente_agendamento` (`C_CPF`),
-  CONSTRAINT `fk_barbeiro_agendamento` FOREIGN KEY (`B_Login`) REFERENCES `barbeiro` (`Login`),
+  CONSTRAINT `fk_barbeiro_agendamento` FOREIGN KEY (`B_Email`) REFERENCES `barbeiro` (`Email`),
   CONSTRAINT `fk_cliente_agendamento` FOREIGN KEY (`C_CPF`) REFERENCES `cliente` (`CPF`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -57,9 +57,9 @@ DROP TABLE IF EXISTS `barbeiro`;
 CREATE TABLE `barbeiro` (
   `Nome` varchar(45) NOT NULL,
   `Telefone` bigint(11) NOT NULL,
-  `Login` varchar(15) NOT NULL,
+  `Email` varchar(15) NOT NULL,
   `Senha` varchar(45) NOT NULL,
-  PRIMARY KEY (`Login`)
+  PRIMARY KEY (`Email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -169,10 +169,10 @@ CREATE TABLE `folga` (
   `Id_Folga` int(11) NOT NULL AUTO_INCREMENT,
   `Inicio` datetime NOT NULL,
   `Fim` datetime NOT NULL,
-  `B_Login` varchar(15) NOT NULL,
+  `B_Email` varchar(15) NOT NULL,
   PRIMARY KEY (`Id_Folga`),
-  KEY `fk_barbeiro_folga` (`B_Login`),
-  CONSTRAINT `fk_barbeiro_folga` FOREIGN KEY (`B_Login`) REFERENCES `barbeiro` (`Login`)
+  KEY `fk_barbeiro_folga` (`B_Email`),
+  CONSTRAINT `fk_barbeiro_folga` FOREIGN KEY (`B_Email`) REFERENCES `barbeiro` (`Email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
