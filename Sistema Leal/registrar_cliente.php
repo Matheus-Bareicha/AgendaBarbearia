@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <title>Registro de Cliente</title>
 </head>
@@ -17,7 +16,7 @@
 	echo $_GET['m']; //imprimindo a msg de erro
 	}
 	?>
-    <div class= "tabela-scroll">
+    <div class= "tabela-scroll" style= "max-height: 500px; min-width: 700px; overflow-x: hidden;">
         <label class="titulo" for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" required><br>
         
