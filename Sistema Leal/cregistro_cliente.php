@@ -1,4 +1,5 @@
 <?php
+require_once ("config.php");
   // 1. VERIFICAR SE O USUÁRIO ESTÁ LOGADO
       // N/A
   
@@ -26,7 +27,7 @@
   $CPF = str_replace(array('.', '-'), '', $CPF);
 
   //5. CONECTAR NO BANCO DE DADOS
-      $conexao = mysqli_connect("localhost", "root", "DPDF@2000", "leal");
+      
   
       
       if(!$conexao){

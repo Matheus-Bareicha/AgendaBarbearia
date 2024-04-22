@@ -1,4 +1,5 @@
 <?php
+require_once ("config.php");
 	session_start();
 	
 	// 1. VERIFICAR SE O USUÁRIO ESTÁ LOGADO

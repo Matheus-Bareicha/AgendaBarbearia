@@ -1,4 +1,5 @@
 <?php
+require_once ("config.php");
 // 1. VERIFICAR SE O USUÁRIO ESTÁ LOGADO
 
 // 2. RECUPERAR OS DADOS DO FORMULÁRIO(HTML)
@@ -8,11 +9,11 @@ $tipo = $_POST['tipo'];
 		
 // 3. VALIDAR OS DADOS ENVIADOS PELO FORMULÁRIO(VALIDAÇÕES)
 	// 3.1. VERIFICAR SE OS CAMPOS OBRIGATORIOS ESTÃO PREENCIDOS
-	 if($login == "" OR $senha == ""){
+	 if($login == "" || $senha == ""){
 		$msg = "Campos obrigatórios não preenchidos";
 		header("Location: login_funcionario.php?m=$msg"); // redireciona
 		exit();
-	}	
+	}
 	
 	// 3.2. VERIFICAR SE AS SENHAS SÃO IGUAIS
 		
@@ -20,7 +21,7 @@ $tipo = $_POST['tipo'];
 	//NSA
 
 //5. CONECTAR NO BANCO DE DADOS
-	$conexao = mysqli_connect("localhost", "root", "DPDF@2000", "leal");
+
 
 	if(!$conexao){
 	//if($conexao == false){
@@ -49,7 +50,7 @@ if($tipo == 0){
 // 7. EXECUTAR SCRIPT SQL
 		    $resultado = mysqli_query($conexao, $sql);
 		
-// 8. TRATAR DADOS RECUPERADOS DO BANCO DE DADOS	
+// 8. TRATAR DADOS RECUPERADOS DO BANCO DE DADOS
 		    //converter em array
 		$arResultado = mysqli_fetch_assoc($resultado);
 
@@ -74,7 +75,8 @@ if ($tipo == 0){
 		$msg = "Usuário ou senha incorretos.";
 		header("Location: login_funcionario.php?m=$msg");
 		exit();
-	}}elseif($tipo == 1){
+	}
+}elseif($tipo == 1){
 
 		if($senha == $arResultado['Senha']){
 			session_start(); // inicia o uso SESSION
@@ -83,7 +85,6 @@ if ($tipo == 0){
 			$_SESSION['tipo'] = $tipo;
 					
 			$msg = "<p> Seja bem vindo " . $arResultado['Nome'];
-			//header("Location: home.php?m=$msg");
 			
 				header("Location: pagina_cliente.php?m=$msg");
 				exit;
@@ -94,11 +95,11 @@ if ($tipo == 0){
 			exit();
 
 
-	}}
+	}
+}
 
 // 10. APRESENTAR OS DADOS
 	
 // 11. FECHAR CONEXÃO COM O BD
 		 mysqli_close ($conexao);
 	
-?>

@@ -9,6 +9,7 @@
 	<form action="" method="post">
 		<h1 id="marca">Sistema Leal</h1>
 		<?php
+		require_once ("config.php");
 			if(isset($_GET['m'])){ // Verifica se há mensagem de erro
 				echo "<h2>" . $_GET['m'] . "</h2>"; // Imprime a mensagem de erro
 			}

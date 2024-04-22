@@ -1,4 +1,5 @@
 <?php
+require_once ("config.php");
   session_start();
   
   // 1. VERIFICAR SE O USUÁRIO ESTÁ LOGADO
@@ -14,7 +15,7 @@ if(isset($_POST['d'])){
   }
 
 
-$conexao = mysqli_connect("localhost", "root", "DPDF@2000", "leal");
+
 
   if(!$conexao){
   //if($conexao == false){
@@ -25,9 +26,9 @@ $conexao = mysqli_connect("localhost", "root", "DPDF@2000", "leal");
 
 $sql =  "SELECT Horario, c.Nome as cliente,c.Telefone as Telefone, Estado, Id_Agendamento
          FROM agendamento a
-         INNER JOIN cliente c 
+         INNER JOIN cliente c
          on a.C_CPF= c.CPF
-         INNER JOIN barbeiro b on a.b_Email = b.Email  
+         INNER JOIN barbeiro b on a.b_Email = b.Email
          WHERE b_Email = '$login' AND DATE(horario) = $data";
 
 

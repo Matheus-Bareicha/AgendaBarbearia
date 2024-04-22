@@ -1,6 +1,7 @@
 <?php
+require_once ("config.php");
 session_start();
-$conexao = mysqli_connect("localhost", "root", "DPDF@2000", "leal");
+
 
   if(!$conexao){
   //if($conexao == false){
@@ -41,7 +42,7 @@ mysqli_close($conexao);
 		<?php
 	if(isset($_GET['m'])){//existe conteúdo na variavel
 	echo $_GET['m']; //imprimindo a msg de erro
-	}					
+	}
 	?>
 		<label for="data" class="titulo">Data:</label>
 		<input type="date"  name="data" required>
@@ -98,3 +99,4 @@ mysqli_close($conexao);
 	</form>
 </body>
 </html>
+

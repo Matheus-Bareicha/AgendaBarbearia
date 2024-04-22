@@ -1,4 +1,5 @@
 <?php
+require_once ("config.php");
 session_start();
 
 // Verificar se o usuário está logado
@@ -9,7 +10,6 @@ if(!$_SESSION['LOGADO']){
 }
 
 // Conectar ao banco de dados
-$conexao = mysqli_connect("localhost", "root", "DPDF@2000", "leal");
 
 if(!$conexao){
     $msg = "Erro ao conectar no BD.";
@@ -36,7 +36,7 @@ $resultado = mysqli_query($conexao, $sql);
         <?php
             if(isset($_GET['m'])) {
                 echo "<h2>" . $_GET['m'] . "</h2>"; //imprimindo a msg de erro
-            }     
+            }
             ?>
     <h1>Registros Financeiros</h1>
 
@@ -76,7 +76,7 @@ $resultado = mysqli_query($conexao, $sql);
         <label for="observacao">Observação:</label>
         <input type="text" id="observacao" name="observacao" required>
 
-        <label>Tipo:</label>
+        <label for="tipo">Tipo:</label>
         <label for="entrada">Entrada</label>
         <input type="radio" id="entrada" name="tipo" value="entrada" checked>
         <label for="saida">Saída</label>

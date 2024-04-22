@@ -1,4 +1,5 @@
 ﻿<?php
+require_once ("config.php");
 // 1. VERIFICAR SE O USUÁRIO ESTÁ LOGADO
 session_start();
 	
@@ -20,10 +21,9 @@ session_start();
 	//NSA
 
 //5. CONECTAR NO BANCO DE DADOS
-	$conexao = mysqli_connect("localhost", "root", "DPDF@2000", "leal");
+
 	
-	if($conexao == true){
-	}else{
+	if(!$conexao){
 		echo "<p>Falha na conexão com o BD";
 	}
 	
@@ -31,10 +31,10 @@ session_start();
 // 6. CRIAR SCRIPT SQL
 	$sql = "SELECT Horario, c.Nome as cliente,c.Telefone as Telefone, Estado, Id_Agendamento
          FROM agendamento a
-         INNER JOIN cliente c 
+         INNER JOIN cliente c
          on a.C_CPF = c.CPF
 		 WHERE id_agendamento = " . $_GET['i'];
-	//echo $sql;
+
 	
 	
 // 7. EXECUTAR SCRIPT SQL

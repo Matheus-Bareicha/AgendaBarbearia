@@ -1,4 +1,5 @@
 <?php
+require_once ("config.php");
 session_start();
 
 // Verificar se o usuário está logado
@@ -24,7 +25,6 @@ $tipo = ($_POST['tipo'] == 'entrada') ? 'entrada' : 'saida';
 $valor = ($tipo == 'entrada') ? $valor : -$valor; // Tornar o valor negativo se o tipo for "saída"
 
 // Conectar ao banco de dados
-$conexao = mysqli_connect("localhost", "root", "DPDF@2000", "leal");
 
 if (!$conexao) {
     $msg = "Erro ao conectar no BD.";
@@ -45,4 +45,4 @@ if ($resultado) {
     $msg = "Erro ao adicionar o registro financeiro.";
     header("Location: financeiro.php?m=$msg");
 }
-?>
+

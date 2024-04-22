@@ -1,4 +1,5 @@
 <?php
+require_once ("config.php");
 	session_start();
 	
 	// 1. VERIFICAR SE O USUÁRIO ESTÁ LOGADO
@@ -19,12 +20,12 @@ $fim_nova_folga = $dfim . ' ' . $hfim;
 		
 // 3. VALIDAR OS DADOS ENVIADOS PELO FORMULÁRIO(VALIDAÇÕES)
 	// 3.1. VERIFICAR SE OS CAMPOS OBRIGATORIOS ESTÃO PREENCIDOS
-	 if($dinicio == "" OR $dfim == "" OR $hinicio == "" OR $dfim == ""){
+	 if($dinicio == "" || $dfim == "" || $hinicio == "" || $dfim == ""){
 		$msg = "Campos obrigatórios não preenchidos";
 		header("Location: definir_horarios.php?m=$msg"); // redireciona
 		exit();
 
-	}	
+	}
 	elseif ($fim_nova_folga <= $inicio_nova_folga) {
 		$msg = "Data ou horário invalidos";
 		header("Location: definir_horarios.php?m=$msg"); // redireciona
@@ -37,7 +38,7 @@ $fim_nova_folga = $dfim . ' ' . $hfim;
 	//NSA
 
 //5. CONECTAR NO BANCO DE DADOS
-	$conexao = mysqli_connect("localhost", "root", "DPDF@2000", "leal");
+
 
 	if(!$conexao){
 	//if($conexao == false){
@@ -46,9 +47,13 @@ $fim_nova_folga = $dfim . ' ' . $hfim;
 	}
 
 // 6. CRIAR SCRIPT SQL
-	$sql = "SELECT 1 FROM Folga WHERE (('$inicio_nova_folga' >= Inicio AND '$inicio_nova_folga' < Fim) OR ('$fim_nova_folga' > Inicio AND '$fim_nova_folga' <= Fim) OR ('$inicio_nova_folga' <= Inicio AND '$fim_nova_folga' >= Fim)) AND '$b_login' = b_Email";
+	$sql = "SELECT 1 FROM Folga
+	WHERE (('$inicio_nova_folga' >= Inicio AND '$inicio_nova_folga' < Fim)
+	 OR ('$fim_nova_folga' > Inicio AND '$fim_nova_folga' <= Fim)
+	 OR ('$inicio_nova_folga' <= Inicio AND '$fim_nova_folga' >= Fim))
+	  AND '$b_login' = b_Email";
 	
-	
+	 
 // 7. EXECUTAR SCRIPT SQL
 		    $resultado = mysqli_query($conexao, $sql);
 		    if(!$resultado){

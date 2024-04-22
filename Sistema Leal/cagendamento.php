@@ -1,4 +1,5 @@
 <?php
+require_once ("config.php");
 // 1. VERIFICAR SE O USUÁRIO ESTÁ LOGADO
 	// N/A
 
@@ -31,7 +32,6 @@
 		exit();
 }
 //5. CONECTAR NO BANCO DE DADOS
-	$conexao = mysqli_connect("localhost", "root", "DPDF@2000", "leal");
 
 	
 	if(!$conexao){
@@ -93,3 +93,4 @@ if ( mysqli_num_rows($resultadoF) > 0) {
 		 mysqli_close ($conexao);
 		 header("Location: sucesso.php?m=$msg"); // redireciona
 				exit();
+				

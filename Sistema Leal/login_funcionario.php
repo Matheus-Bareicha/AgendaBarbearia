@@ -11,10 +11,11 @@
 		<h1 id="marca">A Caverna Barbershop</h1>
 		<h2>Login de Funcionário</h2>
 		<?php
-	if(isset($_GET['m'])){//existe conteúdo na variavel
-	echo $_GET['m']; //imprimindo a msg de erro
-	}					
-	?>
+		require_once ("config.php");
+		if(isset($_GET['m'])){//existe conteúdo na variavel
+		echo $_GET['m']; //imprimindo a msg de erro
+		}
+		?>
 		<label for="usuario" class="titulo">Usuário:</label>
 		<input type="text" name="usuario" placeholder="Digite seu Usuário"  required>
 		<label for="senha" class="titulo">Senha:</label>

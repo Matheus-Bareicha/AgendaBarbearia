@@ -11,10 +11,11 @@
 		<h1 id="marca">Sistema Leal</h1>
 		<h2>Login de Cliente</h2>
 		<?php
-	if(isset($_GET['m'])){//existe conteúdo na variavel
-	echo $_GET['m']; //imprimindo a msg de erro
-	}
-	?>
+		require_once ("config.php");
+		if(isset($_GET['m'])){//existe conteúdo na variavel
+		echo $_GET['m']; //imprimindo a msg de erro
+		}
+		?>
 		<label for="usuario" class="titulo">E-mail:</label>
 		<input type="text" name="usuario" placeholder="Digite seu E-mail">
 		<label for="senha" class="titulo">Senha:</label>
