@@ -6,7 +6,6 @@ require_once ("config.php");
   // 2. RECUPERAR OS DADOS DO FORMULÁRIO(HTML)
     $Nome = $_POST['nome'];
     $Telefone = $_POST['telefone'];
-    $CPF = $_POST['cpf'];
     $Email = $_POST['email'];
     $Senha = $_POST['senha'];
     $ConfirmaSenha = $_POST['confirmasenha'];
@@ -24,7 +23,6 @@ require_once ("config.php");
       
           
   // 4. TRATAR/PREPARAR OS DADOS PARA O BD
-  $CPF = str_replace(array('.', '-'), '', $CPF);
 
   //5. CONECTAR NO BANCO DE DADOS
       
@@ -50,7 +48,7 @@ require_once ("config.php");
   // 6. CRIAR SCRIPT SQL
       $sqlE = "INSERT INTO endereco (UF, Cidade) VALUES ('$UF', '$Cidade')";
   
-  // 7. EXECUTAR SCRIPT SQL  
+  // 7. EXECUTAR SCRIPT SQL
   if (mysqli_query($conexao, $sqlE)) {
     $endereco_id = mysqli_insert_id($conexao); // Obtém o ID do endereço inserido
 } else {
@@ -59,7 +57,8 @@ require_once ("config.php");
     exit();
 }
 
-  $sqlC = "INSERT INTO cliente (Nome, Telefone, CPF, Email, Senha, Endereco) VALUES ('$Nome', '$Telefone', '$CPF', '$Email', '$Senha', $endereco_id)";
+  $sqlC = "INSERT INTO cliente (Nome, Telefone, Email, Senha, Endereco) 
+  VALUES ('$Nome', '$Telefone', '$Email', '$Senha', $endereco_id)";
   if (mysqli_query($conexao, $sqlC)) {
     $msg = "Cliente registrado com sucesso!";
 } else {
@@ -82,5 +81,5 @@ require_once ("config.php");
       
   // 11. FECHAR CONEXÃO COM O BD
            mysqli_close ($conexao);
-           header("Location: sucesso.php?m=$msg"); // redireciona
+           header("Location: login_cliente.php?m=$msg"); // redireciona
                   exit();

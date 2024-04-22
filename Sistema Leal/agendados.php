@@ -20,14 +20,14 @@ if(isset($_POST['d'])){
   if(!$conexao){
   //if($conexao == false){
     $msg = "Erro ao conectar no BD.";
-    header("Location: login_funcionario.php?m=$msg");
+    header("Location: pagina_barbeiro.php?m=$msg");
   }
 
 
 $sql =  "SELECT Horario, c.Nome as cliente,c.Telefone as Telefone, Estado, Id_Agendamento
          FROM agendamento a
          INNER JOIN cliente c
-         on a.C_CPF= c.CPF
+         on a.C_Email= c.Email
          INNER JOIN barbeiro b on a.b_Email = b.Email
          WHERE b_Email = '$login' AND DATE(horario) = $data";
 
@@ -74,7 +74,7 @@ $resultado = mysqli_query($conexao, $sql);
 	
 	
   <form action="agendados.php" method="post">
-	<h1 id="marca">A Caverna Barbershop</h1>
+	<h1 id="marca">Sistema Leal</h1>
 	<h2>Agendamentos</h2>
   <?php
   if (mysqli_num_rows($resultado) > 0) {

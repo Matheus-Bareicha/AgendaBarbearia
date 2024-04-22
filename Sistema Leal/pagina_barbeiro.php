@@ -130,14 +130,14 @@
         <?php
             if(isset($_GET['m'])) {
                 echo "<h2>" . $_GET['m'] . "</h2>"; //imprimindo a msg de erro
-            }                   
+            }
         ?>
         <h2>Selecione uma opção:</h2>
         <div class="divpilar">
             <div class="coluna">
                 <input type="submit" formaction="agendados.php" value="Agenda">
                 <input type="submit" formaction="#" value="Estoque" disabled>
-                <input type="submit" formaction="definir_horarios" value="Registrar Folga">
+                <input type="submit" formaction="definir_horarios.php" value="Registrar Folga">
                 <input type="submit" formaction="#" value="Registrar Serviço" disabled>
             </div>
             <div class="coluna">

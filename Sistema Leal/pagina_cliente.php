@@ -22,6 +22,7 @@
 			</div>
 			<input type="submit" formaction="alterar_dados_cliente.php" value="Alterar dados" class="central-button">
 		</div>
+	
         <a href="clogout.php">SAIR</a>
 	</form>
 </body>

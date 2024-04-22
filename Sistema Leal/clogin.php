@@ -82,7 +82,9 @@ if ($tipo == 0){
 			session_start(); // inicia o uso SESSION
 			$_SESSION['LOGADO'] = true;
 			$_SESSION['LOGIN'] = $arResultado['Email'];
-			$_SESSION['tipo'] = $tipo;
+			$_SESSION['TIPO'] = $tipo;
+			$_SESSION['NOME'] = $arResultado['Nome'];
+
 					
 			$msg = "<p> Seja bem vindo " . $arResultado['Nome'];
 			

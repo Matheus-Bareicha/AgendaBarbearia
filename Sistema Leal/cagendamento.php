@@ -1,5 +1,11 @@
 <?php
-require_once ("config.php");
+session_start();
+if(!$_SESSION['LOGADO']){
+    $msg = "Para acessar essa página é necessário realizar o Login";
+    header("Location: login_cliente.php?m=$msg");
+    exit;
+}
+require_once "config.php";
 // 1. VERIFICAR SE O USUÁRIO ESTÁ LOGADO
 	// N/A
 
@@ -7,7 +13,7 @@ require_once ("config.php");
   $data = $_POST['data'];
   $horario = $_POST['horario'];
   $nome = $_POST['nome'];
-  $telefone = $_POST['telefone'];
+  $Email = $_POST['Email'];
   $barbeiro = $_POST['barbeiro'];
 
 
@@ -43,8 +49,8 @@ require_once ("config.php");
 	
 
 // 6. CRIAR SCRIPT SQL
-	$sqlA = "SELECT 1 FROM agendamento WHERE b_login = '$barbeiro' AND horario = '$dataHora'";
-	$sqlF = "SELECT 1 FROM folga WHERE b_login = '$barbeiro' AND  '$dataHora' BETWEEN inicio AND fim";
+	$sqlA = "SELECT 1 FROM agendamento WHERE b_Email = '$barbeiro' AND horario = '$dataHora'";
+	$sqlF = "SELECT 1 FROM folga WHERE b_Email = '$barbeiro' AND  '$dataHora' BETWEEN inicio AND fim";
 
 // 7. EXECUTAR SCRIPT SQL
 	$resultadoA = mysqli_query($conexao, $sqlA);
@@ -62,13 +68,15 @@ if ( mysqli_num_rows($resultadoF) > 0) {
 	exit();
 	
 }
-		 $sql = "INSERT INTO Agendamento
-         (Horario, Estado, B_Email, C_CPF)
+		 $sql = "INSERT INTO agendamento
+         (Horario, Estado, B_Email, C_Email)
          VALUES
-         ('$dataHora', 'P', '$barbeiro', $telefone);";
+         ('$dataHora', 'P', '$barbeiro', '$Email');";
+
 
 	if (mysqli_query($conexao, $sql)) {
         $msg = "O agendamento foi registrado com sucesso.";
+		$msg .= mysqli_error($conexao);
 				
     } else {
 
@@ -91,6 +99,9 @@ if ( mysqli_num_rows($resultadoF) > 0) {
 	
 // 11. FECHAR CONEXÃO COM O BD
 		 mysqli_close ($conexao);
-		 header("Location: sucesso.php?m=$msg"); // redireciona
-				exit();
+
+			header("Location: pagina_cliente.php?m=$msg"); // redireciona
+			exit();
+
+
 				

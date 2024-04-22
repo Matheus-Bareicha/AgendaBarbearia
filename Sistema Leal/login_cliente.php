@@ -24,6 +24,7 @@
         <input type="submit" value="Trocar Senha" formaction = "troca_senha.php">
         <input type="submit" value="Registrar" formaction = "registrar_cliente.php">
 		<input type="hidden" name= "tipo" value="1">
+
         <a href="index.php">Voltar ao Início</a>
     </form>
 

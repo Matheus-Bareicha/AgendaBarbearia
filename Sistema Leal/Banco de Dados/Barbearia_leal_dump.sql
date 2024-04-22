@@ -28,14 +28,14 @@ DROP TABLE IF EXISTS `agendamento`;
 CREATE TABLE `agendamento` (
   `Id_Agendamento` int(11) NOT NULL AUTO_INCREMENT,
   `B_Email` varchar(100) NOT NULL,
-  `C_CPF` char(11) NOT NULL,
+  `C_Email` VARCHAR(100) NULL,
   `Estado` char(1) NOT NULL,
   `Horario` datetime NOT NULL,
   PRIMARY KEY (`Id_Agendamento`),
   KEY `fk_barbeiro_agendamento` (`B_Email`),
-  KEY `fk_cliente_agendamento` (`C_CPF`),
+  KEY `fk_cliente_agendamento` (`C_Email`),
   CONSTRAINT `fk_barbeiro_agendamento` FOREIGN KEY (`B_Email`) REFERENCES `barbeiro` (`Email`),
-  CONSTRAINT `fk_cliente_agendamento` FOREIGN KEY (`C_CPF`) REFERENCES `cliente` (`CPF`)
+  CONSTRAINT `fk_cliente_agendamento` FOREIGN KEY (`C_Email`) REFERENCES `cliente` (`Email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -84,11 +84,10 @@ DROP TABLE IF EXISTS `cliente`;
 CREATE TABLE `cliente` (
   `Nome` varchar(45) NOT NULL,
   `Telefone` bigint(11) NOT NULL,
-  `CPF` char(11) NOT NULL,
   `Email` varchar(100) NOT NULL,
   `Senha` varchar(150) NOT NULL,
   `Endereco` int(11) NOT NULL,
-  PRIMARY KEY (`CPF`),
+  PRIMARY KEY (`Email`),
   KEY `fk_cliente_endereco` (`Endereco`),
   CONSTRAINT `fk_cliente_endereco` FOREIGN KEY (`Endereco`) REFERENCES `endereco` (`IDEndereco`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -191,7 +190,7 @@ DROP TABLE IF EXISTS `registro financeiro`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `registro financeiro` (
-  `ID_Registro` int(11) NOT NULL,
+  `ID_Registro` int(11) NOT NULL AUTO_INCREMENT,
   `Valor` decimal(10,2) NOT NULL,
   `Observacao` varchar(100) NOT NULL,
   `Data` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -216,14 +215,14 @@ DROP TABLE IF EXISTS `reserva`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `reserva` (
-  `cliente_CPF` char(11) NOT NULL,
+  `c_Email` VARCHAR(100) NOT NULL,
   `Estoque_IDProduto` int(11) NOT NULL,
   `Data` timestamp NOT NULL DEFAULT current_timestamp(),
   `Estado` char(1) NOT NULL,
-  PRIMARY KEY (`cliente_CPF`,`Estoque_IDProduto`),
+  PRIMARY KEY (`c_Email`,`Estoque_IDProduto`),
   KEY `fk_cliente_has_Estoque_Estoque1` (`Estoque_IDProduto`),
   CONSTRAINT `fk_cliente_has_Estoque_Estoque1` FOREIGN KEY (`Estoque_IDProduto`) REFERENCES `estoque` (`IDProduto`),
-  CONSTRAINT `fk_cliente_has_Estoque_cliente1` FOREIGN KEY (`cliente_CPF`) REFERENCES `cliente` (`CPF`)
+  CONSTRAINT `fk_cliente_has_Estoque_cliente1` FOREIGN KEY (`c_Email`) REFERENCES `cliente` (`Email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -295,5 +294,10 @@ UNLOCK TABLES;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+INSERT INTO barbeiro 
+(Nome,Telefone, Email, Senha, Admin)
+VALUES
+("Matheus","123","matheusbareich@gmail.com","123",true)
 
 -- Dump completed on 2024-04-19 11:56:00

@@ -1,6 +1,8 @@
 <?php
 require_once ("config.php");
 session_start();
+$nome = $_SESSION['NOME'];
+$Email = $_SESSION['LOGIN'];
 
 
   if(!$conexao){
@@ -60,10 +62,25 @@ mysqli_close($conexao);
 			<option value="19:00">19:00</option>
 			<option value="20:00">20:00</option>
 		</select>
+		<?php
+		if ($_SESSION['LOGADO']){
+			?>
+			<label for="nome" class="titulo">Nome:</label>
+			<input type="text" name="nome" value="<?php echo $nome; ?>" readonly>
+			<label for="Email" class="titulo">Email:</label>
+			<input type="text" name="Email" value="<?php echo $Email; ?>" readonly>
+		<?php
+		}else{
+		
+		
+		?>
 		<label for="nome" class="titulo">Nome:</label>
 		<input type="text" name="nome" required>
-		<label for="telefone" class="titulo">Telefone:</label>
-		<input type="text" name="telefone" required>
+		<label for="Email" class="titulo">Email:</label>
+		<input type="text" name="Email" required>
+		<?php
+		}
+		?>
 		<label for="horario" class="titulo">Barbeiro:</label>
 		<select name="barbeiro" required>
 			<option value="">Selecione um Barbeiro</option>
@@ -83,7 +100,7 @@ mysqli_close($conexao);
 
 		<input type="submit" value="Agendar">
 <?php
-		if($_SESSION['LOGADO'] == true){
+		if($_SESSION['LOGADO']){
 	?>
 		<a href="pagina_cliente.php">Voltar ao Início</a>
 	<?php

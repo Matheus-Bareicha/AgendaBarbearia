@@ -32,7 +32,7 @@ session_start();
 	$sql = "SELECT Horario, c.Nome as cliente,c.Telefone as Telefone, Estado, Id_Agendamento
          FROM agendamento a
          INNER JOIN cliente c
-         on a.C_CPF = c.CPF
+         on a.C_Email = c.Email
 		 WHERE id_agendamento = " . $_GET['i'];
 
 	
@@ -63,8 +63,10 @@ session_start();
 		<form method="post" action="cEditar.php">
 			<h2>Editar Estado</h2>
 			ID:<input readonly type="text" name="id" value="<?php echo $_GET['i']; ?>"><br/>
-			Data: <input readonly  type="text" name="data" value="<?php echo date('d/m/Y', strtotime($arResultado['Horario']));?>"><br/>
-			Horário: <input readonly  type="text" name="horario"  value="<?php echo date('H:i', strtotime($arResultado['Horario']));?>"><br/>			
+			Data: <input readonly  type="text" name="data"
+			value="<?php echo date('d/m/Y', strtotime($arResultado['Horario']));?>"><br/>
+			Horário: <input readonly  type="text" name="horario"
+			value="<?php echo date('H:i', strtotime($arResultado['Horario']));?>"><br/>			
 			Cliente: <input readonly  type="text" name="cliente" value="<?php echo $arResultado['cliente'];?>"><br/>
 			Telefone: <input readonly  type="text" name="Telefone" value="<?php echo $arResultado['Telefone'];?>"><br/>
 			Estado:<select  name="estado" required>
