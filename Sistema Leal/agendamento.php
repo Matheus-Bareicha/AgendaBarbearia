@@ -1,6 +1,12 @@
 <?php
-require_once ("config.php");
 session_start();
+if(!$_SESSION['LOGADO']){
+    $msg = "Para acessar essa página é necessário realizar o Login";
+    header("Location: login_cliente.php?m=$msg");
+    exit;
+}
+
+require_once ("config.php");
 $nome = $_SESSION['NOME'];
 $Email = $_SESSION['LOGIN'];
 

@@ -13,7 +13,7 @@ if(!$_SESSION['LOGADO']){
 
 if(!$conexao){
     $msg = "Erro ao conectar no BD.";
-    header("Location: login_funcionario.php?m=$msg");
+    header("Location: pagina_barbeiro.php?m=$msg");
     exit;
 }
 
@@ -32,16 +32,34 @@ $resultado = mysqli_query($conexao, $sql);
 </head>
 <body>
 <form action="cfinanceiro.php" method="post">
-<h1 id="marca">A Caverna Barbershop</h1>
+<h1 id="marca">Sistema Leal</h1>
         <?php
             if(isset($_GET['m'])) {
                 echo "<h2>" . $_GET['m'] . "</h2>"; //imprimindo a msg de erro
             }
             ?>
-    <h1>Registros Financeiros</h1>
+
 
     <!-- Tabela para mostrar os registros financeiros -->
-    <div class="tabela-scroll">
+    
+    <!-- Formulário para adicionar novo registro financeiro -->
+    <h2>Novo Registro Financeiro</h2>
+
+        <label for="valor">Valor:</label>
+        <input type="text" id="valor" name="valor" required>
+
+        <label for="observacao">Observação:</label>
+        <input type="text" id="observacao" name="observacao" required>
+
+        <label for="tipo">Tipo:</label>
+        <label for="entrada">Entrada</label>
+        <input type="radio" id="entrada" name="tipo" value="entrada" checked>
+        <label for="saida">Saída</label>
+        <input type="radio" id="saida" name="tipo" value="saida">
+        <input type="submit" value="Adicionar Registro">
+
+        <h2> Registros Financeiros</h2>
+
         <table border="1">
             <tr>
                 <th>ID</th>
@@ -65,24 +83,11 @@ $resultado = mysqli_query($conexao, $sql);
             }
             ?>
         </table>
-    </div>
 
-    <!-- Formulário para adicionar novo registro financeiro -->
-    <h2>Novo Registro Financeiro</h2>
 
-        <label for="valor">Valor:</label>
-        <input type="text" id="valor" name="valor" required>
 
-        <label for="observacao">Observação:</label>
-        <input type="text" id="observacao" name="observacao" required>
-
-        <label for="tipo">Tipo:</label>
-        <label for="entrada">Entrada</label>
-        <input type="radio" id="entrada" name="tipo" value="entrada" checked>
-        <label for="saida">Saída</label>
-        <input type="radio" id="saida" name="tipo" value="saida">
-
-        <input type="submit" value="Adicionar Registro">
+        <a href="pagina_barbeiro.php">Voltar</a>
+        
     </form>
 
 </body>

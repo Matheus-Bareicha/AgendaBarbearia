@@ -8,7 +8,7 @@
 <body>
 	
 	<form action="clogin.php" method="post">
-		<h1 id="marca">A Caverna Barbershop</h1>
+		<h1 id="marca">Sistema Leal</h1>
 		<h2>Login de Funcionário</h2>
 		<?php
 		require_once ("config.php");
