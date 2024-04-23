@@ -41,7 +41,8 @@ if($tipo == 0){
 	$sql = "SELECT
 			Email,
 			Senha,
-			Nome
+			Nome,
+			Telefone
 		    FROM cliente
 		    WHERE  Email = '$login';";
 
@@ -84,6 +85,7 @@ if ($tipo == 0){
 			$_SESSION['LOGIN'] = $arResultado['Email'];
 			$_SESSION['TIPO'] = $tipo;
 			$_SESSION['NOME'] = $arResultado['Nome'];
+			$_SESSION['TELEFONE'] = $arResultado['Telefone'];
 
 					
 			$msg = "<p> Seja bem vindo " . $arResultado['Nome'];

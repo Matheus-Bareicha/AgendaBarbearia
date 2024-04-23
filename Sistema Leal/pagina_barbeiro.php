@@ -9,6 +9,7 @@
     <form action="" method="post">
         <h1 id="marca">Sistema Leal</h1>
         <?php
+        session_start();
         if(!$_SESSION['LOGADO']){
             $msg = "Para acessar essa página é necessário realizar o Login";
             header("Location: login_funcionario.php?m=$msg");

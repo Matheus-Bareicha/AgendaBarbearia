@@ -47,7 +47,7 @@ $fim_nova_folga = $dfim . ' ' . $hfim;
 	}
 
 // 6. CRIAR SCRIPT SQL
-	$sql = "SELECT 1 FROM Folga
+	$sql = "SELECT 1 FROM folga
 	WHERE (('$inicio_nova_folga' >= Inicio AND '$inicio_nova_folga' < Fim)
 	 OR ('$fim_nova_folga' > Inicio AND '$fim_nova_folga' <= Fim)
 	 OR ('$inicio_nova_folga' <= Inicio AND '$fim_nova_folga' >= Fim))
@@ -71,7 +71,7 @@ $fim_nova_folga = $dfim . ' ' . $hfim;
 }else {
 
     $b_login = $_SESSION['LOGIN'];
-    $insertSql = "INSERT INTO Folga(Inicio, Fim, b_Email) VALUES ('$inicio_nova_folga', '$fim_nova_folga', '$b_login')";
+    $insertSql = "INSERT INTO folga(Inicio, Fim, b_Email) VALUES ('$inicio_nova_folga', '$fim_nova_folga', '$b_login')";
 
     if (mysqli_query($conexao, $insertSql)) {
         $msg = "A folga foi inserida com sucesso.";
@@ -97,6 +97,6 @@ $fim_nova_folga = $dfim . ' ' . $hfim;
 	
 // 11. FECHAR CONEXÃO COM O BD
 		 mysqli_close ($conexao);
-		 header("Location: sucesso.php?m=$msg"); // redireciona
+		 header("Location: pagina_barbeiro.php?m=$msg"); // redireciona
 				exit();
 	

@@ -34,8 +34,8 @@ CREATE TABLE `agendamento` (
   PRIMARY KEY (`Id_Agendamento`),
   KEY `fk_barbeiro_agendamento` (`B_Email`),
   KEY `fk_cliente_agendamento` (`C_Email`),
-  CONSTRAINT `fk_barbeiro_agendamento` FOREIGN KEY (`B_Email`) REFERENCES `barbeiro` (`Email`),
-  CONSTRAINT `fk_cliente_agendamento` FOREIGN KEY (`C_Email`) REFERENCES `cliente` (`Email`)
+  CONSTRAINT `fk_barbeiro_agendamento` FOREIGN KEY (`B_Email`) REFERENCES `barbeiro` (`Email`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_cliente_agendamento` FOREIGN KEY (`C_Email`) REFERENCES `cliente` (`Email`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -89,7 +89,7 @@ CREATE TABLE `cliente` (
   `Endereco` int(11) NOT NULL,
   PRIMARY KEY (`Email`),
   KEY `fk_cliente_endereco` (`Endereco`),
-  CONSTRAINT `fk_cliente_endereco` FOREIGN KEY (`Endereco`) REFERENCES `endereco` (`IDEndereco`)
+  CONSTRAINT `fk_cliente_endereco` FOREIGN KEY (`Endereco`) REFERENCES `endereco` (`IDEndereco`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -169,7 +169,7 @@ CREATE TABLE `folga` (
   `B_Email` varchar(100) NOT NULL,
   PRIMARY KEY (`Id_Folga`),
   KEY `fk_barbeiro_folga` (`B_Email`),
-  CONSTRAINT `fk_barbeiro_folga` FOREIGN KEY (`B_Email`) REFERENCES `barbeiro` (`Email`)
+  CONSTRAINT `fk_barbeiro_folga` FOREIGN KEY (`B_Email`) REFERENCES `barbeiro` (`Email`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -221,8 +221,8 @@ CREATE TABLE `reserva` (
   `Estado` char(1) NOT NULL,
   PRIMARY KEY (`c_Email`,`Estoque_IDProduto`),
   KEY `fk_cliente_has_Estoque_Estoque1` (`Estoque_IDProduto`),
-  CONSTRAINT `fk_cliente_has_Estoque_Estoque1` FOREIGN KEY (`Estoque_IDProduto`) REFERENCES `estoque` (`IDProduto`),
-  CONSTRAINT `fk_cliente_has_Estoque_cliente1` FOREIGN KEY (`c_Email`) REFERENCES `cliente` (`Email`)
+  CONSTRAINT `fk_cliente_has_Estoque_Estoque1` FOREIGN KEY (`Estoque_IDProduto`) REFERENCES `estoque` (`IDProduto`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_cliente_has_Estoque_cliente1` FOREIGN KEY (`c_Email`) REFERENCES `cliente` (`Email`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -272,8 +272,8 @@ CREATE TABLE `servicos_no_agendamento` (
   `servicos_ID` int(11) NOT NULL,
   PRIMARY KEY (`agendamento_Id_Agendamento`,`servicos_ID`),
   KEY `fk_agendamento_has_servicos_servicos1` (`servicos_ID`),
-  CONSTRAINT `fk_agendamento_has_servicos_agendamento1` FOREIGN KEY (`agendamento_Id_Agendamento`) REFERENCES `agendamento` (`Id_Agendamento`),
-  CONSTRAINT `fk_agendamento_has_servicos_servicos1` FOREIGN KEY (`servicos_ID`) REFERENCES `servicos` (`ID`)
+  CONSTRAINT `fk_agendamento_has_servicos_agendamento1` FOREIGN KEY (`agendamento_Id_Agendamento`) REFERENCES `agendamento` (`Id_Agendamento`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_agendamento_has_servicos_servicos1` FOREIGN KEY (`servicos_ID`) REFERENCES `servicos` (`ID`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

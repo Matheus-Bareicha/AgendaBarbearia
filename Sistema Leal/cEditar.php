@@ -1,4 +1,11 @@
 <?php
+session_start();
+if(!$_SESSION['LOGADO']){
+    $msg = "Para acessar essa página é necessário realizar o Login";
+    header("Location: login_barbeiro.php?m=$msg");
+    exit;
+}
+
 require_once ("config.php");
 // 1. VERIFICAR SE O USUÁRIO ESTÁ LOGADO
 

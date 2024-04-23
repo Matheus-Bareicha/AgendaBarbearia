@@ -17,7 +17,6 @@ require_once ("config.php");
         $msg = "As senha não coincidem!";
         header("Location: registrar_cliente.php?m=$msg"); // redireciona
         exit();
-
       }
   
       
