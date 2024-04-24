@@ -298,6 +298,6 @@ UNLOCK TABLES;
 INSERT INTO barbeiro 
 (Nome,Telefone, Email, Senha, Admin)
 VALUES
-("Matheus","123","matheusbareich@gmail.com","123",true)
+("admin","123","admin@example.com","123",true)
 
 -- Dump completed on 2024-04-19 11:56:00
