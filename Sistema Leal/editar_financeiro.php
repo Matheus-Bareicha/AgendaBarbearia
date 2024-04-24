@@ -70,6 +70,7 @@ session_start();
 			<p>
 				<input type="submit" value="ATUALIZAR">
 			</p>
+            <a href="financeiro.php">Voltar</a>
 		</form>
 	</body>
 </html>
