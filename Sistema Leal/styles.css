@@ -8,6 +8,7 @@ body {
 }
 
 #marca {
+    
     display: flex;
     text-align: center;
     color: #662000;
@@ -20,7 +21,7 @@ body {
     width: 50%;
 }
 
-.tabela-scroll {
+#tabela-scroll {
     max-height: 600px;
     overflow-y: auto;
 }
@@ -39,9 +40,9 @@ form, .divpilar {
     text-align: center;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin-bottom: 20px;
-	overflow-y: auto;
-	overflow-x:hidden;
+    margin-bottom: 10px;
+	/*overflow-y: auto;
+	overflow-x:hidden;*/
 }
 
 input[type="submit"] {

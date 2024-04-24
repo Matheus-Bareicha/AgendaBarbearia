@@ -66,7 +66,7 @@ session_start();
 			Data: <input readonly  type="text" name="data"
 			value="<?php echo date('d/m/Y', strtotime($arResultado['Horario']));?>"><br/>
 			Horário: <input readonly  type="text" name="horario"
-			value="<?php echo date('H:i', strtotime($arResultado['Horario']));?>"><br/>			
+			value="<?php echo date('H:i', strtotime($arResultado['Horario']));?>"><br/>
 			Cliente: <input readonly  type="text" name="cliente" value="<?php echo $arResultado['cliente'];?>"><br/>
 			Telefone: <input readonly  type="text" name="Telefone" value="<?php echo $arResultado['Telefone'];?>"><br/>
 			Estado:<select  name="estado" required>

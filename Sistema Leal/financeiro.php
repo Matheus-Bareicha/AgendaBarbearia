@@ -18,8 +18,9 @@ if(!$conexao){
 }
 
 // Consulta SQL para buscar os registros financeiros
-$sql = "SELECT * FROM `registro financeiro`";
+$sql = "SELECT * FROM registro_financeiro";
 $resultado = mysqli_query($conexao, $sql);
+
 
 ?>
 
@@ -29,6 +30,27 @@ $resultado = mysqli_query($conexao, $sql);
     <meta charset="UTF-8">
     <title>Financeiro</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Inclua o plugin jQuery Mask Money -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+<script>
+$(document).ready(function(){
+    // Aplica a máscara de valor monetário ao campo de entrada com id 'valor'
+    $('#valor').maskMoney({
+        prefix: 'R$ ', // Adiciona o prefixo 'R$ ' ao valor
+        allowNegative: false, // Impede valores negativos
+        thousands: '', // Usa '.' como separador de milhar
+        decimal: '.', // Usa ',' como separador decimal
+        affixesStay: true // Mantém o prefixo ao focar no campo
+    });
+
+    // Remove caracteres não numéricos antes de enviar o formulário
+    $('form').submit(function(){
+        var valor = $('#valor').val().replace(/[^\d.]/g, ''); // Remove todos os caracteres não numéricos, exceto o ponto decimal
+        $('#valor').val(valor); // Atualiza o valor do campo de entrada
+    });
+});
+</script>
 </head>
 <body>
 <form action="cfinanceiro.php" method="post">
@@ -46,8 +68,8 @@ $resultado = mysqli_query($conexao, $sql);
     <h2>Novo Registro Financeiro</h2>
 
         <label for="valor">Valor:</label>
-        <input type="text" id="valor" name="valor" required>
-
+        <input type="text" id="valor" name="valor" >
+  
         <label for="observacao">Observação:</label>
         <input type="text" id="observacao" name="observacao" required>
 
@@ -59,13 +81,14 @@ $resultado = mysqli_query($conexao, $sql);
         <input type="submit" value="Adicionar Registro">
 
         <h2> Registros Financeiros</h2>
-
+        <div id="tabela-scroll">
         <table border="1">
             <tr>
                 <th>ID</th>
                 <th>Valor</th>
                 <th>Observação</th>
                 <th>Data</th>
+                <th>Editar</th>
             </tr>
             <?php
             // Loop para exibir os registros financeiros
@@ -76,6 +99,7 @@ $resultado = mysqli_query($conexao, $sql);
                     echo "<td>R$ " . $row['Valor'] . "</td>";
                     echo "<td>" . $row['Observacao'] . "</td>";
                     echo "<td>" . $row['Data'] . "</td>";
+                    echo "<td><a href='editar_financeiro.php?i=" .$row['ID_Registro']."'>Alterar</a></td>";
                     echo "</tr>";
                 }
             } else {
@@ -83,7 +107,7 @@ $resultado = mysqli_query($conexao, $sql);
             }
             ?>
         </table>
-
+        </div>
 
 
         <a href="pagina_barbeiro.php">Voltar</a>

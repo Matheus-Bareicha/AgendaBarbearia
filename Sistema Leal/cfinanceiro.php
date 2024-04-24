@@ -32,8 +32,12 @@ if (!$conexao) {
     exit;
 }
 
+// Formatar o valor como número decimal com ponto decimal e sem separador de milhar
+$valor_formatado = number_format($valor, 2, '.', '');
+
 // Inserir o novo registro financeiro no banco de dados
-$sql = "INSERT INTO `registro financeiro` (Valor, Observacao) VALUES ('$valor', '$observacao')";
+$sql = "INSERT INTO `registro financeiro` (Valor, Observacao) VALUES ('$valor_formatado', '$observacao')";
+
 
 $resultado = mysqli_query($conexao, $sql);
 

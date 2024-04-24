@@ -34,7 +34,8 @@ if($tipo == 0){
 	$sql = "SELECT
 			Email,
 			Senha,
-			Nome
+			Nome,
+			Admin
 		    FROM barbeiro
 		    WHERE  Email = '$login';";
 }elseif($tipo == 1){
@@ -64,6 +65,7 @@ if ($tipo == 0){
 		$_SESSION['LOGADO'] = true;
 		$_SESSION['LOGIN'] = $arResultado['Email'];
 		$_SESSION['tipo'] = $tipo;
+		$_SESSION['ADMIN'] = $arResultado['Admin'];
 				
 		$msg = "<p> Seja bem vindo " . $arResultado['Nome'];
 		//header("Location: home.php?m=$msg");
