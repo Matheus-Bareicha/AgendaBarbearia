@@ -2,16 +2,23 @@
 Projeto de faculdade voltado para ajudar com os agendamentos de uma barbearia
 ---
 
--Para executar o programa é necessario o programa XAMPP ou um outro servidor, como o proprio servidor embutido do php e mysql
+-Para executar o programa é necessario ter instalado na maquina o php (iremos usar seu servidor embutido) e o mysql (seja pelo xampp ou workbench + mysql server)
 
--Coloque a pasta do projeto na pasta htdocs do XAMPP
+-Abra o terminal e navegue até a pasta que contém o index.php
 
--Execute o Apache e o Mysql no XAMPP
+-Execute o comando 
 
--Acesse localhost/phpmyadmin e importe o script Mysql da pasta Banco de Dados
+```bash
+php -S localhost:8080
+```
 
--Acesse localhost para a pagina inicial do site
+-Pode ser necessario alterar a porta
+
+-Acesse localhost/phpmyadmin (se estiver usando o xampp) ou o workbench e importe o script Mysql da pasta Banco de Dados
+
+-Acesse localhost:8080 para a pagina inicial do site
+
+-Para Login de funcionário o login de admin é admin@example.com senha 123 (pode ser alterado no final do script do banco antes de sua execução )
 
 -Para login de Cliente, a função registrar cliente está funcional
 
--Para Login de funcionário o login de admin é admin@example.com senha 123 (pode ser alterado no final do script do banco antes de sua execução )
