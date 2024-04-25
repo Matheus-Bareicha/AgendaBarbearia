@@ -26,12 +26,15 @@
                 <input type="submit" formaction="#" value="Estoque" disabled>
                 <input type="submit" formaction="definir_horarios.php" value="Registrar Folga">
                 <input type="submit" formaction="#" value="Registrar Serviço" disabled>
-            </div>
-            <div class="coluna">
-                <input type="submit" formaction="#" value="Registrar Funcionário"disabled>
                 <input type="submit" formaction="financeiro.php" value="Financeiro">
-                <input type="submit" formaction="#" value="Editar Dados" disabled>
+                <input type="submit" formaction="alterar_dados_barbeiro.php" value="Editar Dados">
                 <input type="submit" formaction="#" value="Encomendas" disabled>
+                <?php if($_SESSION['ADMIN']){
+                    ?>
+                <input type="submit" formaction="#" value="Registrar Funcionário"disabled>
+                <?php
+                }
+                ?>
             </div>
 
 		<a href="clogout.php">SAIR</a>
