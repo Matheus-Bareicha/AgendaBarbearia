@@ -31,7 +31,7 @@
                 <input type="submit" formaction="#" value="Encomendas" disabled>
                 <?php if($_SESSION['ADMIN']){
                     ?>
-                <input type="submit" formaction="#" value="Registrar Funcionário"disabled>
+                <input type="submit" formaction="registrar_barbeiro.php" value="Registrar Funcionário">
                 <?php
                 }
                 ?>
