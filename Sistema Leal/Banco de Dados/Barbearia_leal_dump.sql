@@ -28,7 +28,7 @@ DROP TABLE IF EXISTS `agendamento`;
 CREATE TABLE `agendamento` (
   `Id_Agendamento` int(11) NOT NULL AUTO_INCREMENT,
   `B_Email` varchar(100) NOT NULL,
-  `C_Email` VARCHAR(100) NULL,
+  `C_Email` VARCHAR(100) NOT NULL,
   `Estado` char(1) NOT NULL,
   `Horario` datetime NOT NULL,
   PRIMARY KEY (`Id_Agendamento`),
@@ -218,6 +218,7 @@ CREATE TABLE `reserva` (
   `c_Email` VARCHAR(100) NOT NULL,
   `Estoque_IDProduto` int(11) NOT NULL,
   `Data` timestamp NOT NULL DEFAULT current_timestamp(),
+  `QTD` int NOT NULL,
   `Estado` char(1) NOT NULL,
   PRIMARY KEY (`c_Email`,`Estoque_IDProduto`),
   KEY `fk_cliente_has_Estoque_Estoque1` (`Estoque_IDProduto`),
