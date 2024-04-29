@@ -12,7 +12,7 @@
 
     <h2>Registro de Funcinário</h2>
     <?php
-    require_once ("config.php");
+    require_once "config.php";
     
 	if(isset($_GET['m'])){//existe conteúdo na variavel
 	echo $_GET['m']; //imprimindo a msg de erro
@@ -41,7 +41,7 @@
         </div>
         
         <input type="submit" value="Registrar">
-        <a href="login_barbeiro.php">Voltar ao Início</a>
+        <a href="pagina_barbeiro.php">Voltar ao Início</a>
 
 
     </form>

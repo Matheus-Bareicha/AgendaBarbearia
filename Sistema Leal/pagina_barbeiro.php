@@ -25,7 +25,7 @@
                 <input type="submit" formaction="agendados.php" value="Agenda">
                 <input type="submit" formaction="#" value="Estoque" disabled>
                 <input type="submit" formaction="definir_horarios.php" value="Registrar Folga">
-                <input type="submit" formaction="#" value="Registrar Serviço" disabled>
+                <input type="submit" formaction="registrar_servico.php" value="Registrar Serviço">
                 <input type="submit" formaction="financeiro.php" value="Financeiro">
                 <input type="submit" formaction="alterar_dados_barbeiro.php" value="Editar Dados">
                 <input type="submit" formaction="#" value="Encomendas" disabled>
