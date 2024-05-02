@@ -138,8 +138,7 @@ CREATE TABLE `estoque` (
   `Nome` varchar(100) NOT NULL,
   `Quantidade` int(11) NOT NULL,
   `QTD_Alerta` int(11) NOT NULL,
-  `Valor_Venda` float NOT NULL,
-  `Venda` tinyint(4) NOT NULL,
+  `Preco` float NOT NULL,
   `LIM_Venda` int(11) NOT NULL,
   `Promocao` int(11) DEFAULT NULL,
   PRIMARY KEY (`IDProduto`)

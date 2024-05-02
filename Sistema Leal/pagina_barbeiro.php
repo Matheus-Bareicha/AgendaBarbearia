@@ -23,7 +23,7 @@
 
             <div class="coluna">
                 <input type="submit" formaction="agendados.php" value="Agenda">
-                <input type="submit" formaction="#" value="Estoque" disabled>
+                <input type="submit" formaction="estoque.php" value="Estoque">
                 <input type="submit" formaction="definir_horarios.php" value="Registrar Folga">
                 <input type="submit" formaction="registrar_servico.php" value="Registrar Serviço">
                 <input type="submit" formaction="financeiro.php" value="Financeiro">
