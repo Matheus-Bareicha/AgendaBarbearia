@@ -81,6 +81,7 @@ $resultado = mysqli_query($conexao, $sql);
 
             </tr>
             <?php
+          
             // Loop para exibir os registros financeiros
             if(mysqli_num_rows($resultado) > 0) {
                 while ($row = mysqli_fetch_assoc($resultado)) {
@@ -91,12 +92,12 @@ $resultado = mysqli_query($conexao, $sql);
                     echo "<td>" . $row['QTD_Alerta'] . "</td>";
                     echo "<td>" . $row['Preco'] . "</td>";
                     echo "<td>" . $row['LIM_Venda'] . "</td>";
-                    echo "<td>" . $row['Promocao'] . "</td>";
+                    echo "<td>" . $row['Promocao'] ."%" . "</td>";
                     echo "<td><a href='editar_produto.php?i=" .$row['IDProduto']."'>Alterar</a></td>";
                     echo "</tr>";
                 }
             } else {
-                echo "<tr><td colspan='7'>Nenhum produto encontrado.</td></tr>";
+                echo "<tr><td colspan='8'>Nenhum produto encontrado.</td></tr>";
             }
             ?>
         </table>

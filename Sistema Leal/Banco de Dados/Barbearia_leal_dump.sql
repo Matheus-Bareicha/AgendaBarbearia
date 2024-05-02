@@ -140,7 +140,7 @@ CREATE TABLE `estoque` (
   `QTD_Alerta` int(11) NOT NULL,
   `Preco` float NOT NULL,
   `LIM_Venda` int(11) NOT NULL,
-  `Promocao` int(11) DEFAULT NULL,
+  `Promocao` int(11) DEFAULT 0,
   PRIMARY KEY (`IDProduto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
