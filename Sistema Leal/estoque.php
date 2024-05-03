@@ -30,6 +30,12 @@ $resultado = mysqli_query($conexao, $sql);
     <meta charset="UTF-8">
     <title>Financeiro</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        /* Estilos adicionais */
+        .preco {
+            text-align: right;
+        }
+    </style>
 </head>
 <body>
 <form action="cproduto.php" method="post">
@@ -74,9 +80,9 @@ $resultado = mysqli_query($conexao, $sql);
                 <th>Nome</th>
                 <th>Quantidade</th>
                 <th>Quantidade Alerta</th>
-                <th>Preço</th>
+                <th>Preço (R$)</th>
                 <th>Limite Venda</th>
-                <th>Promoção</th>
+                <th>Promoção (%)</th>
                 <th>Editar</th>
 
             </tr>
@@ -90,7 +96,7 @@ $resultado = mysqli_query($conexao, $sql);
                     echo "<td>" . $row['Nome'] . "</td>";
                     echo "<td>" . $row['Quantidade'] . "</td>";
                     echo "<td>" . $row['QTD_Alerta'] . "</td>";
-                    echo "<td>" . $row['Preco'] . "</td>";
+                    echo "<td class='preco'>R$ " . number_format($row['Preco'], 2, ',', '.') . "</td>";
                     echo "<td>" . $row['LIM_Venda'] . "</td>";
                     echo "<td>" . $row['Promocao'] ."%" . "</td>";
                     echo "<td><a href='editar_produto.php?i=" .$row['IDProduto']."'>Alterar</a></td>";
