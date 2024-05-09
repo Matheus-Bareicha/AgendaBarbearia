@@ -110,7 +110,7 @@
         </div>
         
         <input type="submit" value="Registrar">
-        <a href="pagina_barbeiro.php">Voltar ao Início</a>
+        <a href="pagina_cliente.php">Voltar ao Início</a>
 
 
     </form>
