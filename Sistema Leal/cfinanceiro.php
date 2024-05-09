@@ -36,7 +36,7 @@ if (!$conexao) {
 $valor_formatado = number_format($valor, 2, '.', '');
 
 // Inserir o novo registro financeiro no banco de dados
-$sql = "INSERT INTO `registro financeiro` (Valor, Observacao) VALUES ('$valor_formatado', '$observacao')";
+$sql = "INSERT INTO `registro_financeiro` (Valor, Observacao) VALUES ('$valor_formatado', '$observacao')";
 
 
 $resultado = mysqli_query($conexao, $sql);

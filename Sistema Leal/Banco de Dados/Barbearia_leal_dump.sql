@@ -185,10 +185,10 @@ UNLOCK TABLES;
 -- Table structure for table `registro financeiro`
 --
 
-DROP TABLE IF EXISTS `registro financeiro`;
+DROP TABLE IF EXISTS `registro_financeiro`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `registro financeiro` (
+CREATE TABLE `registro_financeiro` (
   `ID_Registro` int(11) NOT NULL AUTO_INCREMENT,
   `Valor` decimal(10,2) NOT NULL,
   `Observacao` varchar(100) NOT NULL,
@@ -201,7 +201,7 @@ CREATE TABLE `registro financeiro` (
 -- Dumping data for table `registro financeiro`
 --
 
-LOCK TABLES `registro financeiro` WRITE;
+LOCK TABLES `registro_financeiro` WRITE;
 /*!40000 ALTER TABLE `registro financeiro` DISABLE KEYS */;
 /*!40000 ALTER TABLE `registro financeiro` ENABLE KEYS */;
 UNLOCK TABLES;
