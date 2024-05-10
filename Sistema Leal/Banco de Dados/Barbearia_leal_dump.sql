@@ -219,7 +219,7 @@ CREATE TABLE `reserva` (
   `Data` timestamp NOT NULL DEFAULT current_timestamp(),
   `QTD` int NOT NULL,
   `Estado` char(1) NOT NULL,
-  PRIMARY KEY (`c_Email`,`Estoque_IDProduto`),
+  PRIMARY KEY (`c_Email`,`Estoque_IDProduto`, `Data`), -- Adicionando a terceira coluna `Data`
   KEY `fk_cliente_has_Estoque_Estoque1` (`Estoque_IDProduto`),
   CONSTRAINT `fk_cliente_has_Estoque_Estoque1` FOREIGN KEY (`Estoque_IDProduto`) REFERENCES `estoque` (`IDProduto`) ON UPDATE CASCADE,
   CONSTRAINT `fk_cliente_has_Estoque_cliente1` FOREIGN KEY (`c_Email`) REFERENCES `cliente` (`Email`) ON UPDATE CASCADE

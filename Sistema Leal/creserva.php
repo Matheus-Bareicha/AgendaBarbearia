@@ -33,6 +33,8 @@ foreach ($_POST as $chave => $valor) {
                 // Aqui você pode fazer o que quiser com o par de valores
                 // echo "ID do Produto: $id_produto, Quantidade Selecionada: $quantidade <br>";
                 $sql = "INSERT INTO `reserva` (c_Email, Estoque_IDProduto, QTD, Estado) VALUES ('$email', '$id_produto', '$quantidade', 'P')";
+              //  echo $sql;
+              //  exit;
 
 
                 if(mysqli_query($conexao, $sql)){

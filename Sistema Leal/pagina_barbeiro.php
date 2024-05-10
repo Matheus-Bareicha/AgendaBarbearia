@@ -28,7 +28,7 @@
                 <input type="submit" formaction="registrar_servico.php" value="Registrar Serviço">
                 <input type="submit" formaction="financeiro.php" value="Financeiro">
                 <input type="submit" formaction="alterar_dados_barbeiro.php" value="Editar Dados">
-                <input type="submit" formaction="#" value="Encomendas" disabled>
+                <input type="submit" formaction="encomendas.php" value="Encomendas">
                 <?php if($_SESSION['ADMIN']){
                     ?>
                 <input type="submit" formaction="registrar_barbeiro.php" value="Registrar Funcionário">

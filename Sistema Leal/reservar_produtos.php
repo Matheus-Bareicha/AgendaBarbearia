@@ -60,7 +60,7 @@
 	?>
     <div class= "tabela-scroll" style= "max-height: 500px; min-width: 700px; overflow-x: hidden;">
 
-    <table>
+    <table border="1">
     <thead>
         <tr>
             <th>ID Produto</th>
