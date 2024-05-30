@@ -1,7 +1,7 @@
 <?php
 session_start();
-if(!$_SESSION['LOGADO']){
-    $msg = "Para acessar essa página é necessário realizar o Login";
+if(!$_SESSION['LOGADO'] || $_SESSION['TIPO']!= 1){
+    $msg = "Para acessar essa página é necessário realizar o Login como cliente";
     header("Location: login_cliente.php?m=$msg");
     exit;
 }

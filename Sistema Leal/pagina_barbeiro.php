@@ -1,3 +1,13 @@
+<?php
+        session_start();
+        if(!$_SESSION['LOGADO'] || $_SESSION['TIPO']!=0){
+            $msg = "Para acessar essa página é necessário realizar o Login";
+            header("Location: login_funcionario.php?m=$msg");
+            exit;
+        }
+        ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,17 +18,13 @@
 <body>
     <form action="" method="post">
         <h1 id="marca">Sistema Leal</h1>
+
         <?php
-        session_start();
-        if(!$_SESSION['LOGADO']){
-            $msg = "Para acessar essa página é necessário realizar o Login";
-            header("Location: login_funcionario.php?m=$msg");
-            exit;
-        }
-            if(isset($_GET['m'])) {
+        if(isset($_GET['m'])) {
                 echo "<h2>" . $_GET['m'] . "</h2>"; //imprimindo a msg de erro
             }
         ?>
+
         <h2>Selecione uma opção:</h2>
 
             <div class="coluna">

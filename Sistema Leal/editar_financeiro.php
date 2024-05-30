@@ -1,14 +1,6 @@
 <?php
-require_once ("config.php");
-// 1. VERIFICAR SE O USUÁRIO ESTÁ LOGADO
-session_start();
-	
-	// 1. VERIFICAR SE O USUÁRIO ESTÁ LOGADO
-	if(!$_SESSION['LOGADO']){
-		$msg = "Para acessar essa página é necessário realizar o Login";
-		header("Location: login_funcionario.php?m=$msg");
-		exit;
-	}
+require_once "config.php";
+
 // 2. RECUPERAR OS DADOS DO FORMULÁRIO(HTML)
 		
 // 3. VALIDAR OS DADOS ENVIADOS PELO FORMULÁRIO(VALIDAÇÕES)
@@ -63,7 +55,7 @@ session_start();
 			ID:<input readonly type="text" name="id" value="<?php echo $_GET['i']; ?>"><br/>
 			Data: <input readonly  type="text" name="data"
 			value="<?php echo date('d/m/Y', strtotime($arResultado['Data']));?>"><br/>
-			Horário: <input readonly  type="text" name="horario"
+			Horário: <input disabled  type="text" name="horario"
 			value="<?php echo date('H:i', strtotime($arResultado['Data']));?>"><br/>
 			Valor: <input  type="text" name="Valor" value="<?php echo $arResultado['Valor'];?>"><br/>
 			OBS: <input  type="text" name="Obs" value="<?php echo $arResultado['Observacao'];?>"><br/>

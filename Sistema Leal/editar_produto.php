@@ -1,14 +1,15 @@
 <?php
-require_once ("config.php");
-// 1. VERIFICAR SE O USUÁRIO ESTÁ LOGADO
-session_start();
-	
-	// 1. VERIFICAR SE O USUÁRIO ESTÁ LOGADO
-	if(!$_SESSION['LOGADO']){
-		$msg = "Para acessar essa página é necessário realizar o Login";
+	session_start();
+	if(!$_SESSION['LOGADO'] || $_SESSION['TIPO']!= 0){
+		$msg = "Para acessar essa página é necessário realizar o Login como barbeiro";
 		header("Location: login_funcionario.php?m=$msg");
 		exit;
 	}
+?>
+	<?php
+require_once "config.php";
+
+	 
 // 2. RECUPERAR OS DADOS DO FORMULÁRIO(HTML)
 		
 // 3. VALIDAR OS DADOS ENVIADOS PELO FORMULÁRIO(VALIDAÇÕES)

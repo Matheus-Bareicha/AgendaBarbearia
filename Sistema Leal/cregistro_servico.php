@@ -1,4 +1,12 @@
 <?php
+session_start();
+if(!$_SESSION['LOGADO'] || $_SESSION['TIPO']!= 0){
+    $msg = "Para acessar essa página é necessário realizar o Login como barbeiro";
+    header("Location: login_funcionario.php?m=$msg");
+    exit;
+}
+?>
+ <?php
 require_once "config.php";
   // 1. VERIFICAR SE O USUÁRIO ESTÁ LOGADO
       // N/A

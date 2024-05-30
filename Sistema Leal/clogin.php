@@ -57,13 +57,24 @@ if($tipo == 0){
 		$arResultado = mysqli_fetch_assoc($resultado);
 
 	
+
+// 8.1 DESABILITAR SESSAO ANTERIOR
+		session_start(); // inicia o uso SESSION
+		unset($_SESSION['LOGADO']);
+		unset($_SESSION['LOGIN']);
+		unset($_SESSION['tipo']);
+		unset($_SESSION['ADMIN']);
+		unset($_SESSION['NOME']);
+		unset($_SESSION['TELEFONE']);
 // 9. REALIZAR OS PROCESSAMENTOS NECESSÁRIOS (...)
 if ($tipo == 0){
 		if($senha == $arResultado['Senha']){
 		// JÁ SEI QUE TÁ LOGADO
-		session_start(); // inicia o uso SESSION
+
 		$_SESSION['LOGADO'] = true;
+		
 		$_SESSION['LOGIN'] = $arResultado['Email'];
+		
 		$_SESSION['tipo'] = $tipo;
 		$_SESSION['ADMIN'] = $arResultado['Admin'];
 				
@@ -82,7 +93,6 @@ if ($tipo == 0){
 }elseif($tipo == 1){
 
 		if($senha == $arResultado['Senha']){
-			session_start(); // inicia o uso SESSION
 			$_SESSION['LOGADO'] = true;
 			$_SESSION['LOGIN'] = $arResultado['Email'];
 			$_SESSION['TIPO'] = $tipo;

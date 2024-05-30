@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+<?php
+	session_start();
+	if(!$_SESSION['LOGADO'] || $_SESSION['TIPO']!= 1){
+		$msg = "Para acessar essa página é necessário realizar o Login como cliente";
+		header("Location: login_cliente.php?m=$msg");
+		exit;
+	}
+?>
+	<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -70,7 +78,7 @@
                     echo "<td>" . $row['Estado'] . "</td>";
                     echo "</tr>";
                     // Adiciona o preço total da linha ao subtotal
-                    $subtotal_preco += $row['Preco'] * $row['QTD']; 
+                    $subtotal_preco += $row['Preco'] * $row['QTD'];
                     $cliente_anterior = $row['Cliente']; // Atualiza o cliente anterior
                     $data_anterior = $row['Data']; // Atualiza a data anterior
                 }

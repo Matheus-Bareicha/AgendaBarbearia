@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+<?php
+	session_start();
+	if(!$_SESSION['LOGADO'] || $_SESSION['TIPO']!= 0){
+		$msg = "Para acessar essa página é necessário realizar o Login como barbeiro";
+		header("Location: login_funcionario.php?m=$msg");
+		exit;
+	}
+?>
+	<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

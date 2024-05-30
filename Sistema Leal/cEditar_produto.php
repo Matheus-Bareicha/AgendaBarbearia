@@ -1,12 +1,16 @@
 <?php
 session_start();
-if(!$_SESSION['LOGADO']){
-    $msg = "Para acessar essa página é necessário realizar o Login";
-    header("Location: login_barbeiro.php?m=$msg");
+if(!$_SESSION['LOGADO'] || $_SESSION['TIPO']!= 0){
+    $msg = "Para acessar essa página é necessário realizar o Login como barbeiro";
+    header("Location: login_funcionario.php?m=$msg");
     exit;
 }
+?>
+ 
+<?php
 
-require_once("config.php");
+
+require_once "config.php";
 
 // 2. RECUPERAR OS DADOS DO FORMULÁRIO(HTML)
 $id = $_POST['id'];

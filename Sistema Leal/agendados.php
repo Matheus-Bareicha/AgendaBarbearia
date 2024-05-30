@@ -1,13 +1,15 @@
 <?php
-require_once ("config.php");
+require_once "config.php";
   session_start();
   
   // 1. VERIFICAR SE O USUÁRIO ESTÁ LOGADO
-  if(!$_SESSION['LOGADO']){
-    $msg = "Para acessar essa página é necessário realizar o Login";
-    header("Location: login_funcionario.php?m=$msg");
-    exit;
+
+  if(!$_SESSION['LOGADO'] || $_SESSION['TIPO']!=0){
+      $msg = "Para acessar essa página é necessário realizar o Login como funcionario";
+      header("Location: login_funcionario.php?m=$msg");
+      exit;
   }
+
 $data = "curdate()";
 $login = $_SESSION['LOGIN'];
 if(isset($_POST['d'])){

@@ -1,5 +1,5 @@
 <?php
-require_once ("config.php");
+require_once "config.php";
 	session_start();
 	session_destroy();
 	$msg = "LogOut Bem Sucedido!";

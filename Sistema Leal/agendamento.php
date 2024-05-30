@@ -1,12 +1,12 @@
 <?php
 session_start();
-if(!$_SESSION['LOGADO']){
-    $msg = "Para acessar essa página é necessário realizar o Login";
+if(!$_SESSION['LOGADO'] || $_SESSION['TIPO']!= 1){
+    $msg = "Para acessar essa página é necessário realizar o Login como cliente";
     header("Location: login_cliente.php?m=$msg");
     exit;
 }
 
-require_once ("config.php");
+require_once "config.php";
 $nome = $_SESSION['NOME'];
 $Email = $_SESSION['LOGIN'];
 
@@ -14,7 +14,7 @@ $Email = $_SESSION['LOGIN'];
   if(!$conexao){
   //if($conexao == false){
     $msg = "Erro ao conectar no BD.";
-    header("Location: login_funcionario.php?m=$msg");
+    header("Location: pagina_cliente.php?m=$msg");
   }
 
 
@@ -24,16 +24,8 @@ $sql =  "SELECT Nome, Email
 $resultado = mysqli_query($conexao, $sql);
 
 
-
-
-
-
 mysqli_close($conexao);
 ?>
-
-
-
-
 
 
 <!DOCTYPE html>
@@ -72,9 +64,9 @@ mysqli_close($conexao);
 		if ($_SESSION['LOGADO']){
 			?>
 			<label for="nome" class="titulo">Nome:</label>
-			<input type="text" name="nome" value="<?php echo $nome; ?>" readonly>
+			<input type="text" name="nome" value="<?php echo $nome; ?>" disabled>
 			<label for="Email" class="titulo">Email:</label>
-			<input type="text" name="Email" value="<?php echo $Email; ?>" readonly>
+			<input type="text" name="Email" value="<?php echo $Email; ?>" disabled>
 		<?php
 		}else{
 		
@@ -92,10 +84,6 @@ mysqli_close($conexao);
 			<option value="">Selecione um Barbeiro</option>
 <?php
     while($arResultado = mysqli_fetch_assoc($resultado)){
-
-
-
-
   ?>
 			<option value="<?php echo $arResultado['Email'];?>"><?php echo $arResultado['Nome'];?></option>
 <?php
@@ -105,19 +93,8 @@ mysqli_close($conexao);
 		</select>
 
 		<input type="submit" value="Agendar">
-<?php
-		if($_SESSION['LOGADO']){
-	?>
+
 		<a href="pagina_cliente.php">Voltar ao Início</a>
-	<?php
-	}
-	else {
-		?>
-		<a href="index.php">Voltar ao Início</a>
-		<?php }
-		?>
-
-
 	
 	</form>
 </body>

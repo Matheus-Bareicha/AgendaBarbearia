@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+<?php
+	session_start();
+	if(!$_SESSION['LOGADO'] || $_SESSION['TIPO']!= 0){
+		$msg = "Para acessar essa página é necessário realizar o Login como barbeiro";
+		header("Location: login_funcionario.php?m=$msg");
+		exit;
+	}
+?>
+	<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,7 +18,7 @@
             text-align: right;
         }
         .quantidade-selector {
-            display: flex;
+            /* display: flex; */
             align-items: center;
             width: 100%;
             height: 100%;
@@ -89,11 +97,13 @@
                 echo "<td>" . $row['IDProduto'] . "</td>";
                 echo "<td>" . $row['Nome'] . "</td>";
                 echo "<td>" . $row['QuantidadeDisponivel'] . "</td>";
+                
                 echo "<td class='quantidade-selector'>";
                 echo "<button class='quantidade-btn' type='button' onclick='decrementarQuantidade(this)'>-</button>";
                 echo "<span data-id-produto='" . $row['IDProduto'] . "'>0</span>"; // Quantidade inicial é zero
                 echo "<button class='quantidade-btn' type='button' onclick='incrementarQuantidade(this)'>+</button>";
                 echo "</td>";
+
                 echo "<td class='preco'>R$ " . number_format($row['Preco'], 2, ',', '.') . "</td>"; // Formatando o preço em reais
                 echo "<td>" . ($row['Promocao'] ?? 0) . "%</td>"; // Se o valor de Promoção for NULL, exibe 0
                 echo "</tr>";

@@ -12,7 +12,7 @@
 
     <h2>Registro de Cliente</h2>
     <?php
-    require_once ("config.php");
+    require_once "config.php";
     
 	if(isset($_GET['m'])){//existe conteúdo na variavel
 	echo $_GET['m']; //imprimindo a msg de erro

@@ -1,3 +1,12 @@
+<?php
+session_start();
+if(!$_SESSION['LOGADO'] || $_SESSION['TIPO']!= 0){
+    $msg = "Para acessar essa página é necessário realizar o Login como barbeiro";
+    header("Location: login_funcionario.php?m=$msg");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,13 +21,9 @@
 
     <h2>Alterar Dados Funcionário</h2>
     <?php
-    session_start();
-if(!$_SESSION['LOGADO']){
-    $msg = "Para acessar essa página é necessário realizar o Login";
-    header("Location: login_funcionario.php?m=$msg");
-    exit;
-}
-    require_once ("config.php");
+    
+
+    require_once "config.php";
     
 	if(isset($_GET['m'])){//existe conteúdo na variavel
 	echo $_GET['m']; //imprimindo a msg de erro

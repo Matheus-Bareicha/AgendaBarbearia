@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+<?php
+	session_start();
+	if(!$_SESSION['LOGADO'] || $_SESSION['TIPO']!= 0 || $_SESSION['ADMIN'] != 1 ){
+		$msg = "Para acessar essa página é necessário realizar o Login como admin";
+		header("Location: login_funcionario.php?m=$msg");
+		exit;
+	}
+?>
+	<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

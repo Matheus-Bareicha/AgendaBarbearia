@@ -1,5 +1,5 @@
 <?php
-require_once ("config.php");
+require_once "config.php";
   // 1. VERIFICAR SE O USUÁRIO ESTÁ LOGADO
       // N/A
   
