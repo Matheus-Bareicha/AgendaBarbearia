@@ -1,8 +1,8 @@
 <?php
 	session_start();
-	if(!$_SESSION['LOGADO'] || $_SESSION['TIPO']!= 0){
-		$msg = "Para acessar essa página é necessário realizar o Login como barbeiro";
-		header("Location: login_funcionario.php?m=$msg");
+	if(!$_SESSION['LOGADO'] || $_SESSION['TIPO']!= 1){
+		$msg = "Para acessar essa página é necessário realizar o Login como cliente";
+		header("Location: login_cliente.php?m=$msg");
 		exit;
 	}
 ?>

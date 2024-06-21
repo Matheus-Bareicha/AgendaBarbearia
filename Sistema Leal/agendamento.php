@@ -12,16 +12,21 @@ $Email = $_SESSION['LOGIN'];
 
 
   if(!$conexao){
-  //if($conexao == false){
     $msg = "Erro ao conectar no BD.";
     header("Location: pagina_cliente.php?m=$msg");
   }
 
-
-$sql =  "SELECT Nome, Email
+//buscando os barbeiros
+$sqlBarbeiro =  "SELECT Nome, Email
          FROM barbeiro";
 
-$resultado = mysqli_query($conexao, $sql);
+$resultadoBarbeiro = mysqli_query($conexao, $sqlBarbeiro);
+
+//buscondo os servicos
+$sqlServico =  "SELECT ID, Nome, Valor
+		 FROM servicos";
+
+$resultadoServico = mysqli_query($conexao, $sqlServico);
 
 
 mysqli_close($conexao);
@@ -59,6 +64,7 @@ mysqli_close($conexao);
 			<option value="18:00">18:00</option>
 			<option value="19:00">19:00</option>
 			<option value="20:00">20:00</option>
+
 		</select>
 		<?php
 		if ($_SESSION['LOGADO']){
@@ -83,7 +89,7 @@ mysqli_close($conexao);
 		<select name="barbeiro" required>
 			<option value="">Selecione um Barbeiro</option>
 <?php
-    while($arResultado = mysqli_fetch_assoc($resultado)){
+    while($arResultado = mysqli_fetch_assoc($resultadoBarbeiro)){
   ?>
 			<option value="<?php echo $arResultado['Email'];?>"><?php echo $arResultado['Nome'];?></option>
 <?php
@@ -91,6 +97,26 @@ mysqli_close($conexao);
   ?>
 			
 		</select>
+		
+		<table>
+			<tr>
+				<th>Serviço</th>
+				<th>Valor</th>
+				<th>Selecionar</th>
+			</tr>
+<?php
+	while($arResultado = mysqli_fetch_assoc($resultadoServico)){
+?>
+			<tr>
+				<td><?php echo $arResultado['Nome'];?></td>
+				<td><?php echo $arResultado['Valor'];?></td>
+			
+				<td><input type="checkbox" name="servico[]" value="<?php echo $arResultado['ID'];?>"></td>
+			</tr>
+<?php
+	}
+?>
+		</table>
 
 		<input type="submit" value="Agendar">
 

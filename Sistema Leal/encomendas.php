@@ -1,8 +1,8 @@
 <?php
 	session_start();
-	if(!$_SESSION['LOGADO'] || $_SESSION['TIPO']!= 1){
-		$msg = "Para acessar essa página é necessário realizar o Login como cliente";
-		header("Location: login_cliente.php?m=$msg");
+	if(!$_SESSION['LOGADO'] || $_SESSION['TIPO']!= 0){
+		$msg = "Para acessar essa página é necessário realizar o Login como funcionario";
+		header("Location: login_funcionario.php?m=$msg");
 		exit;
 	}
 ?>
@@ -11,14 +11,14 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <title>Registro de Serviço</title>
+    <title>Encomendas</title>
 </head>
 <body>
     <form>
     
     <h1 id="marca">Sistema Leal</h1>
 
-    <h2>Registro de Serviço</h2>
+    <h2>Encomendas</h2>
     <?php
     require_once "config.php";
     
@@ -58,7 +58,8 @@
 
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
-                    if ($row['Data'] != $data_anterior) {
+                    if ( abs(strtotime($row['Data']) - strtotime($data_anterior)) > 1) {
+
                         // Exibe uma linha de subtotal antes de cada nova data, mostrando o total do preço dos registros com a data anterior
                         if ($data_anterior != "") {
                             echo "<tr><td colspan='2'>Subtotal:</td><td>$subtotal_preco</td><td colspan='3'></td></tr>";

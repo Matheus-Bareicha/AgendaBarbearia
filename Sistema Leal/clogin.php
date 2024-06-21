@@ -75,7 +75,7 @@ if ($tipo == 0){
 		
 		$_SESSION['LOGIN'] = $arResultado['Email'];
 		
-		$_SESSION['tipo'] = $tipo;
+		$_SESSION['TIPO'] = $tipo;
 		$_SESSION['ADMIN'] = $arResultado['Admin'];
 				
 		$msg = "<p> Seja bem vindo " . $arResultado['Nome'];

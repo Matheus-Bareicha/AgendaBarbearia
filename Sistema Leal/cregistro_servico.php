@@ -61,5 +61,5 @@ require_once "config.php";
       
   // 11. FECHAR CONEXÃO COM O BD
            mysqli_close ($conexao);
-           header("Location: pagina_barbeiro.php?m=$msg"); // redireciona
+           header("Location: registrar_servico.php?m=$msg"); // redireciona
                   exit();

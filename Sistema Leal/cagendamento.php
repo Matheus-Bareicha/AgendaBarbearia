@@ -12,9 +12,10 @@ require_once "config.php";
 // 2. RECUPERAR OS DADOS DO FORMULÁRIO(HTML)
   $data = $_POST['data'];
   $horario = $_POST['horario'];
-  $nome = $_POST['nome'];
-  $Email = $_POST['Email'];
+  $nome = $_SESSION['NOME'];
+  $Email = $_SESSION['LOGIN'];
   $barbeiro = $_POST['barbeiro'];
+  $servico = $_POST['servico'];
 
 
 
@@ -68,6 +69,7 @@ if ( mysqli_num_rows($resultadoF) > 0) {
 	exit();
 	
 }
+//script para inserir o agendamento
 		 $sql = "INSERT INTO agendamento
          (Horario, Estado, B_Email, C_Email)
          VALUES
@@ -75,8 +77,19 @@ if ( mysqli_num_rows($resultadoF) > 0) {
 
 
 	if (mysqli_query($conexao, $sql)) {
+		$agendamentoId = mysqli_insert_id($conexao);
         $msg = "O agendamento foi registrado com sucesso.";
 		$msg .= mysqli_error($conexao);
+
+		foreach ($servico as $servicoId) {
+            $sqlServico = "INSERT INTO servicos_no_agendamento (agendamento_id_Agendamento, servicos_ID) VALUES ('$agendamentoId', '$servicoId')";
+
+            if (mysqli_query($conexao, $sqlServico)) {
+                $msg .= " Serviço ID $servicoId inserido com sucesso.";
+            } else {
+                $msg .= " Erro ao inserir o serviço ID $servicoId: " . mysqli_error($conexao);
+            }
+		}
 				
     } else {
 
