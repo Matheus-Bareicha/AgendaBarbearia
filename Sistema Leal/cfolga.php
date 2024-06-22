@@ -44,7 +44,7 @@ $fim_nova_folga = $dfim . ' ' . $hfim;
 	if(!$conexao){
 	//if($conexao == false){
 		$msg = "Erro ao conectar no BD.";
-		header("Location: login_funcionario.php?m=$msg");
+		header("Location: pagina_barbeiro.php?m=$msg");
 	}
 
 // 6. CRIAR SCRIPT SQL

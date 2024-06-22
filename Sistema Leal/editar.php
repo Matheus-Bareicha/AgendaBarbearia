@@ -24,7 +24,9 @@ require_once "config.php";
 
 	
 	if(!$conexao){
-		echo "<p>Falha na conexão com o BD";
+			$msg = "Erro ao conectar no BD.";
+			header("Location: agendamentos.php?m=$msg");
+			exit();
 	}
 	
 
@@ -39,6 +41,12 @@ require_once "config.php";
 	
 // 7. EXECUTAR SCRIPT SQL
 	$resultado = mysqli_query($conexao, $sql);
+
+	if(!$resultado){
+		$msg = "Erro ao executar o comando SQL";
+		header("Location: agendamentos.php?m=$msg");
+		exit();
+	}
 		
 // 8. TRATAR DADOS RECUPERADOS DO BANCO DE DADOS
 

@@ -34,10 +34,10 @@ $resultado = mysqli_query($conexao, $sql);
 
 if ($resultado) {
     mysqli_close($conexao);
-    $msg = "Registro financeiro adicionado com sucesso!";
+    $msg = "Produto adicionado com sucesso!";
     header("Location: estoque.php?m=$msg");
 } else {
-    $msg = "Erro ao adicionar o registro financeiro.";
+    $msg = "Erro ao adicionar o Produto.";
     header("Location: estoque.php?m=$msg");
 }
 

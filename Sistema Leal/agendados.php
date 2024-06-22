@@ -37,7 +37,7 @@ $sql =  "SELECT Horario, c.Nome as cliente,c.Telefone as Telefone, Estado, Id_Ag
 $resultado = mysqli_query($conexao, $sql);
         if(!$resultado){
         $msg = "Erro na consulta";
-        header("Location: definir_horarios.php?m=$msg"); // redireciona
+        header("Location: pagina_barbeiro.php?m=$msg"); // redireciona
         exit();
 
       }

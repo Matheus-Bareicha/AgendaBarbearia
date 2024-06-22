@@ -30,7 +30,7 @@ require_once "config.php";
       if(!$conexao){
       //if($conexao == false){
           $msg = "Erro ao conectar no BD.";
-          header("Location: registrar_cliente.php?m=$msg");
+          header("Location: registrar_servico.php?m=$msg");
           exit();
       }
   
@@ -40,7 +40,7 @@ require_once "config.php";
   VALUES ('$Nome', '$Valor', '$Duracao')";
 
   if (mysqli_query($conexao, $sql)) {
-    $msg = "Cliente registrado com sucesso!";
+    $msg = "Serviço registrado com sucesso!";
 } else {
     $msg = "Erro ao registrar serviço: " . mysqli_error($conexao);
     header("Location: registrar_servico.php?m=$msg"); // redireciona

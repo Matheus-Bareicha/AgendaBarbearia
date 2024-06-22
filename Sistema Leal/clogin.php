@@ -11,7 +11,7 @@ $tipo = $_POST['tipo'];
 	// 3.1. VERIFICAR SE OS CAMPOS OBRIGATORIOS ESTÃO PREENCIDOS
 	 if($login == "" || $senha == ""){
 		$msg = "Campos obrigatórios não preenchidos";
-		header("Location: login_funcionario.php?m=$msg"); // redireciona
+		header("Location: index.php?m=$msg"); // redireciona
 		exit();
 	}
 	
@@ -26,7 +26,7 @@ $tipo = $_POST['tipo'];
 	if(!$conexao){
 	//if($conexao == false){
 		$msg = "Erro ao conectar no BD.";
-		header("Location: login_funcionario.php?m=$msg");
+		header("Location: index.php?m=$msg");
 	}
 $sql;
 // 6. CRIAR SCRIPT SQL

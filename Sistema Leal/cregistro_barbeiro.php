@@ -26,7 +26,7 @@ require_once "config.php";
   // 3. VALIDAR OS DADOS ENVIADOS PELO FORMULÁRIO(VALIDAÇÕES)
       if ($Senha != $ConfirmaSenha){
         $msg = "As senha não coincidem!";
-        header("Location: registrar_cliente.php?m=$msg"); // redireciona
+        header("Location: registrar_barbeiro.php?m=$msg"); // redireciona
         exit();
       }
   
@@ -41,7 +41,7 @@ require_once "config.php";
       if(!$conexao){
       //if($conexao == false){
           $msg = "Erro ao conectar no BD.";
-          header("Location: registrar_cliente.php?m=$msg");
+          header("Location: registrar_barbeiro.php?m=$msg");
           exit();
       }
 
@@ -50,7 +50,7 @@ require_once "config.php";
       $row = mysqli_fetch_assoc($resultado);
       if ($row['total'] > 0) {
           $msg = "E-mail já registrado!";
-          header("Location: registrar_cliente.php?m=$msg"); // redireciona
+          header("Location: registrar_barbeiro.php?m=$msg"); // redireciona
           exit();
       }
       

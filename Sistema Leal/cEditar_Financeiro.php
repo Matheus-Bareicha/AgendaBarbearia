@@ -53,7 +53,11 @@ require_once "config.php";
 		// 11. FECHAR CONEXÃO COM O BD
 		mysqli_close($conexao);
 	
-		$msg = "Estado do agendamento alterado com sucesso!";
+		$msg = "Registro alterado com sucesso!";
+		header("Location: financeiro.php?m=$msg");
+	}
+	else{
+		$msg = "Erro ao alterar o registro!";
 		header("Location: financeiro.php?m=$msg");
 	}
 // 8. TRATAR DADOS RECUPERADOS DO BANCO DE DADOS

@@ -32,7 +32,7 @@ if(!$_SESSION['LOGADO'] || $_SESSION['TIPO']!= 1){
     if(!$conexao){
         //if($conexao == false){
             $msg = "Erro ao conectar no BD.";
-            header("Location: login_funcionario.php?m=$msg");
+            header("Location: pagina_cliente.php?m=$msg");
         }
     $sql;
     // 6. CRIAR SCRIPT SQL

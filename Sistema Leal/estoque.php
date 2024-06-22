@@ -48,7 +48,6 @@ $resultado = mysqli_query($conexao, $sql);
             ?>
 
 
-    <!-- Tabela para mostrar os registros financeiros -->
     
     <!-- Formulário para adicionar novo registro financeiro -->
     <h2>Novo Produto</h2>

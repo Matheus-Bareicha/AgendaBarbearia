@@ -1,4 +1,12 @@
 <?php
+session_start();
+if(!$_SESSION['LOGADO'] || $_SESSION['TIPO']!= 0 || $_SESSION['ADMIN']!= 1){
+    $msg = "Para acessar essa página é necessário realizar o Login como Admin";
+    header("Location: login_funcionario.php?m=$msg");
+    exit;
+}
+?>
+<?php
 require_once "config.php";
 
 // 2. RECUPERAR OS DADOS DO FORMULÁRIO(HTML)
@@ -16,7 +24,10 @@ require_once "config.php";
 
 	
 	if(!$conexao){
-		echo "<p>Falha na conexão com o BD";
+			$msg = "Erro ao conectar no BD.";
+			header("Location: financeiro.php?m=$msg");
+			exit();
+		
 	}
 	
 
@@ -29,6 +40,12 @@ require_once "config.php";
 	
 // 7. EXECUTAR SCRIPT SQL
 	$resultado = mysqli_query($conexao, $sql);
+
+	if(!$resultado){
+		$msg = "Erro ao executar o comando SQL";
+		header("Location: financeiro.php?m=$msg");
+		exit();
+	}
 		
 // 8. TRATAR DADOS RECUPERADOS DO BANCO DE DADOS
 

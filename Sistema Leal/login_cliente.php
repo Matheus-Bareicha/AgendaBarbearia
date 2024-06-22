@@ -21,7 +21,7 @@
 		<label for="senha" class="titulo">Senha:</label>
 		<input type="password" name="senha">
 		<input type="submit" value="Entrar">
-        <input type="submit" value="Trocar Senha" formaction = "troca_senha.php">
+        <!--<input type="submit" value="Trocar Senha" formaction = "troca_senha.php">-->
         <input type="submit" value="Registrar" formaction = "registrar_cliente.php">
 		<input type="hidden" name= "tipo" value="1">
 

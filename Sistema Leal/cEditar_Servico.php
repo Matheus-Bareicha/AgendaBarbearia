@@ -37,7 +37,8 @@ require_once "config.php";
         header("Location: registrar_servico.php?m=$msg");
         exit;
     } else {
-        echo "Erro ao atualizar serviço: " . mysqli_error($conexao);
+        $msg = "Erro ao atualizar serviço!";
+        header("Location: registrar_servico.php?m=$msg");;
     }
 
 
