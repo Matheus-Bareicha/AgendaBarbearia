@@ -28,6 +28,7 @@
 			<div class="buttons-container">
 				<input type="submit" formaction="agendamento.php" value="Agendar Horario">
 				<input type="submit" formaction="reservar_produtos.php" value="Reservar Produtos">
+				<input type="submit" formaction="agendamentos_e_reservas.php" value="Agendamentos e Reservas">
 			</div>
 			<input type="submit" formaction="alterar_dados_cliente.php" value="Alterar dados" class="central-button">
 		</div>
